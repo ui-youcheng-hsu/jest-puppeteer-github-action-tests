@@ -4,9 +4,13 @@ jobs:
   tests:
     runs-on: ubuntu-latest
     container:
-      image: node:14
+      image: ubuntu
     steps:
       - uses: actions/checkout@master
+      - uses: actions/setup-node@v3
+        with:
+          node-version: 14
+      - run: npm i -g yarn
       - name: Get yarn cache directory path
         id: yarn-cache-dir-path
         run: echo "::set-output name=dir::$(yarn cache dir)"
